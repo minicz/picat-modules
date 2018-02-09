@@ -1,0 +1,6 @@
+import term_color.
+
+main =>
+    println(p_color(magenta,"Teste")),
+    p_reset, p_bold, println(p_red(p_Green("Hello"))), p_noBold,
+    p_faint, println(p_red("World")++" teste"++p_blue(" - now it is blue!")), p_reset.

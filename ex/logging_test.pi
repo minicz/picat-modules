@@ -1,0 +1,74 @@
+import term_color.
+import logging.
+
+main =>
+    log_setlevel(debug),
+    logging(1, "teste"),
+    logging(critical,"teste"),
+    logging(error,"teste"),
+    logging(warning,"teste"),
+    logging(info,"teste"),
+    logging(debug,"teste"),
+
+    logging(1, "teste %w", 1),
+    logging(critical,"teste %w", 1),
+    logging(error,"teste %w", 1),
+    logging(warning,"teste %w", 1),
+    logging(info,"teste %w", 1),
+    logging(debug,"teste %w", 1),
+
+    logging(1, "teste %w %w",1,2),
+    logging(critical,"teste %w %w",1,2),
+    logging(error,"teste %w %w",1,2),
+    logging(warning,"teste %w %w",1,2),
+    logging(info,"teste %w %w",1,2),
+    logging(debug,"teste %w %w",1,2),
+
+    logging(1, "teste %w %w %w",1,2,3),
+    logging(critical,"teste %w %w %w",1,2,3),
+    logging(error,"teste %w %w %w",1,2,3),
+    logging(warning,"teste %w %w %w",1,2,3),
+    logging(info,"teste %w %w %w",1,2,3),
+    logging(debug,"teste %w %w %w",1,2,3),
+
+    logging(1, "teste %w %w %w %w",1,2,3,4),
+    logging(critical,"teste %w %w %w %w",1,2,3,4),
+    logging(error,"teste %w %w %w %w",1,2,3,4),
+    logging(warning,"teste %w %w %w %w",1,2,3,4),
+    logging(info,"teste %w %w %w %w",1,2,3,4),
+    logging(debug,"teste %w %w %w %w",1,2,3,4),
+
+    logging(1, "teste %w %w %w %w %w",1,2,3,4,5),
+    logging(critical,"teste %w %w %w %w %w",1,2,3,4,5),
+    logging(error,"teste %w %w %w %w %w",1,2,3,4,5),
+    logging(warning,"teste %w %w %w %w %w",1,2,3,4,5),
+    logging(info,"teste %w %w %w %w %w",1,2,3,4,5),
+    logging(debug,"teste %w %w %w %w %w",1,2,3,4,5),
+
+    logging(1, "teste %w %w %w %w %w %w",1,2,3,4,5,6),
+    logging(critical,"teste %w %w %w %w %w %w",1,2,3,4,5,6),
+    logging(error,"teste %w %w %w %w %w %w",1,2,3,4,5,6),
+    logging(warning,"teste %w %w %w %w %w %w",1,2,3,4,5,6),
+    logging(info,"teste %w %w %w %w %w %w",1,2,3,4,5,6),
+    logging(debug,"teste %w %w %w %w %w %w",1,2,3,4,5,6),
+
+    logging(1, "teste %w %w %w %w %w %w %w",1,2,3,4,5,6,7),
+    logging(critical,"teste %w %w %w %w %w %w %w",1,2,3,4,5,6,7),
+    logging(error,"teste %w %w %w %w %w %w %w",1,2,3,4,5,6,7),
+    logging(warning,"teste %w %w %w %w %w %w %w",1,2,3,4,5,6,7),
+    logging(info,"teste %w %w %w %w %w %w %w",1,2,3,4,5,6,7),
+    logging(debug,"teste %w %w %w %w %w %w %w",1,2,3,4,5,6,7),
+
+    logging(1, "teste %w %w %w %w %w %w %w %w",1,2,3,4,5,6,7,8),
+    logging(critical,"teste %w %w %w %w %w %w %w %w",1,2,3,4,5,6,7,8),
+    logging(error,"teste %w %w %w %w %w %w %w %w",1,2,3,4,5,6,7,8),
+    logging(warning,"teste %w %w %w %w %w %w %w %w",1,2,3,4,5,6,7,8),
+    logging(info,"teste %w %w %w %w %w %w %w %w",1,2,3,4,5,6,7,8),
+    logging(debug,"teste %w %w %w %w %w %w %w %w",1,2,3,4,5,6,7,8),
+
+    logging(1, "teste %w %w %w %w %w %w %w %w %w",1,2,3,4,5,6,7,8,9),
+    logging(critical,"teste %w %w %w %w %w %w %w %w %w",1,2,3,4,5,6,7,8,9),
+    logging(error,"teste %w %w %w %w %w %w %w %w %w",1,2,3,4,5,6,7,8,9),
+    logging(warning,"teste %w %w %w %w %w %w %w %w %w",1,2,3,4,5,6,7,8,9),
+    logging(info,"teste %w %w %w %w %w %w %w %w %w",1,2,3,4,5,6,7,8,9),
+    logging(debug,"teste %w %w %w %w %w %w %w %w %w",1,2,3,4,5,6,7,8,9).
