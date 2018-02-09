@@ -1,0 +1,34 @@
+module logging.
+
+% get_global_map().put(logging_level, WARNING).
+% index(-,-)
+% logging_level(DEBUG,50).
+% logging_level(INFO,40).
+% logging_level(WARNING,30).
+% logging_level(ERROR,20).
+% logging_level(CRITICAL,10).
+
+log_setlevel(L), number(L) =>
+    get_global_map().put(logging_level, L).
+
+logging(L, Format) =>
+    LL = get_global_map().get(logging_level),
+    (L <= LL -> printf("[Level %w] " ++ Format, L), nl; true).
+logging(L, Format, A1) =>
+    LL = get_global_map().get(logging_level),
+    (L <= LL -> printf("[Level %w] " ++ Format, L, A1), nl; true).
+logging(L, Format, A1, A2) =>
+    LL = get_global_map().get(logging_level),
+    (L <= LL -> printf("[Level %w] " ++ Format, L, A1, A2), nl; true).
+logging(L, Format, A1, A2, A3) =>
+    LL = get_global_map().get(logging_level),
+    (L <= LL -> printf("[Level %w] " ++ Format, L, A1, A2, A3), nl; true).
+logging(L, Format, A1, A2, A3, A4) =>
+    LL = get_global_map().get(logging_level),
+    (L <= LL -> printf("[Level %w] " ++ Format, L, A1, A2, A3, A4), nl; true).
+logging(L, Format, A1, A2, A3, A4, A5) =>
+    LL = get_global_map().get(logging_level),
+    (L <= LL -> printf("[Level %w] " ++ Format, L, A1, A2, A3, A4, A5), nl; true).
+logging(L, Format, A1, A2, A3, A4, A5, A6) =>
+    LL = get_global_map().get(logging_level),
+    (L <= LL -> printf("[Level %w] " ++ Format, L, A1, A2, A3, A4, A5, A6), nl; true).
