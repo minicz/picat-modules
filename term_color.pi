@@ -1,10 +1,10 @@
 % file: term_color.pi
 % author: Marcio Minicz
-% version: 0.1
+% version: 0.2
 % description: terminal color module for Picat.
 % readme: 
 %         TODO
-% github link: [to be included]
+% github link: https://github.com/minicz/picat-modules
 %
 % The MIT License (MIT)
 % 
@@ -40,7 +40,7 @@ p_noBold      => printf("\033\[22m").
 p_noFaint     => printf("\033\[22m").
 p_noItalic    => printf("\033\[23m").
 p_noUnderline => printf("\033\[24m").
-                
+
 p_black(T) = R   => R = "\033\[30m"++T++"\033\[39m".
 p_red(T) = R     => R = "\033\[31m"++T++"\033\[39m".
 p_green(T) = R   => R = "\033\[32m"++T++"\033\[39m".
@@ -57,4 +57,21 @@ p_Blue(T) = R    => R = "\033\[44m"++T++"\033\[49m".
 p_Magenta(T) = R => R = "\033\[45m"++T++"\033\[49m".
 p_Cyan(T) = R    => R = "\033\[46m"++T++"\033\[49m".
 p_White(T) = R   => R = "\033\[47m"++T++"\033\[49m".
-                
+
+p_color(black,T) = R    => R = p_black(T).
+p_color(red,T) = R      => R = p_red(T).
+p_color(green,T) = R    => R = p_green(T).
+p_color(yellow,T) = R   => R = p_yellow(T).
+p_color(blue,T) = R     => R = p_blue(T).
+p_color(magenta,T) = R  => R = p_magenta(T).
+p_color(cyan,T) = R     => R = p_cyan(T).
+p_color(white,T) = R    => R = p_white(T).
+p_color(bBlack,T) = R   => R = p_Black(T).
+p_color(bRed,T) = R     => R = p_Red(T).
+p_color(bGreen,T) = R   => R = p_Green(T).
+p_color(bYellow,T) = R  => R = p_Yellow(T).
+p_color(bBlue,T) = R    => R = p_Blue(T).
+p_color(bMagenta,T) = R => R = p_Magenta(T).
+p_color(bCyan,T) = R    => R = p_Cyan(T).
+p_color(bWhite,T) = R   => R = p_White(T).
+p_color(none,T) = R     => R = T.
