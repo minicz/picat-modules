@@ -4,7 +4,7 @@
 
 Logging facility module
 
-**Version:** 0.1
+**Version:** 0.2
 **License:** MIT
 
 **Date:** 2018-02-09

@@ -1,34 +1,143 @@
+% file: logging.pi
+% author: Marcio Minicz
+% version: 0.2
+% description: logging facility module for Picat.
+% readme: 
+%         TODO
+% github link: https://github.com/minicz/picat-modules
+%
+% The MIT License (MIT)
+% 
+% Copyright (c) 2018 Marcio Minicz
+% 
+% Permission is hereby granted, free of charge, to any person obtaining a copy
+% of this software and associated documentation files (the "Software"), to deal
+% in the Software without restriction, including without limitation the rights
+% to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+% copies of the Software, and to permit persons to whom the Software is
+% furnished to do so, subject to the following conditions:
+% 
+% The above copyright notice and this permission notice shall be included in
+% all copies or substantial portions of the Software.
+% 
+% THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+% IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+% FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+% AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+% LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+% OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+% THE SOFTWARE.
+
 module logging.
 
-% get_global_map().put(logging_level, WARNING).
-% index(-,-)
-% logging_level(DEBUG,50).
-% logging_level(INFO,40).
-% logging_level(WARNING,30).
-% logging_level(ERROR,20).
-% logging_level(CRITICAL,10).
+import term_color.
 
 log_setlevel(L), number(L) =>
     get_global_map().put(logging_level, L).
+log_setlevel(critical) =>
+    get_global_map().put(logging_level, 10).
+log_setlevel(error) =>
+    get_global_map().put(logging_level, 20).
+log_setlevel(warning) =>
+    get_global_map().put(logging_level, 30).
+log_setlevel(info) =>
+    get_global_map().put(logging_level, 40).
+log_setlevel(debug) =>
+    get_global_map().put(logging_level, 50).
 
-logging(L, Format) =>
+logging(critical) = L => L = [10,magenta].
+logging(error) = L    => L = [20,red].
+logging(warning) = L  => L = [30,yellow].
+logging(info) = L     => L = [40,blue].
+logging(debug) = L    => L = [50,green].
+
+logging(L,Text), number(L) =>
     LL = get_global_map().get(logging_level),
-    (L <= LL -> printf("[Level %w] " ++ Format, L), nl; true).
-logging(L, Format, A1) =>
+    (L <= LL -> printf("[Level %w] "++Text,L), nl; true).
+logging(L,Text), atom(L) =>
     LL = get_global_map().get(logging_level),
-    (L <= LL -> printf("[Level %w] " ++ Format, L, A1), nl; true).
-logging(L, Format, A1, A2) =>
+    T := logging(L),
+    if T[1] <= LL then
+        printf(p_color(T[2],"[Level %w] ")++Text,to_uppercase(atom_chars(L))), nl
+    end.
+logging(L,Text,A1), number(L) =>
     LL = get_global_map().get(logging_level),
-    (L <= LL -> printf("[Level %w] " ++ Format, L, A1, A2), nl; true).
-logging(L, Format, A1, A2, A3) =>
+    (L <= LL -> printf("[Level %w] "++Text,L,A1), nl; true).
+logging(L,Text,A1), atom(L) =>
     LL = get_global_map().get(logging_level),
-    (L <= LL -> printf("[Level %w] " ++ Format, L, A1, A2, A3), nl; true).
-logging(L, Format, A1, A2, A3, A4) =>
+    T := logging(L),
+    if T[1] <= LL then
+        printf(p_color(T[2],"[Level %w] ")++Text,to_uppercase(atom_chars(L)),A1), nl
+    end.
+logging(L,Text,A1,A2), number(L) =>
     LL = get_global_map().get(logging_level),
-    (L <= LL -> printf("[Level %w] " ++ Format, L, A1, A2, A3, A4), nl; true).
-logging(L, Format, A1, A2, A3, A4, A5) =>
+    (L <= LL -> printf("[Level %w] "++Text,L,A1,A2), nl; true).
+logging(L,Text,A1,A2), atom(L) =>
     LL = get_global_map().get(logging_level),
-    (L <= LL -> printf("[Level %w] " ++ Format, L, A1, A2, A3, A4, A5), nl; true).
-logging(L, Format, A1, A2, A3, A4, A5, A6) =>
+    T := logging(L),
+    if T[1] <= LL then
+        printf(p_color(T[2],"[Level %w] ")++Text,to_uppercase(atom_chars(L)),A1,A2), nl
+    end.
+logging(L,Text,A1,A2,A3), number(L) =>
     LL = get_global_map().get(logging_level),
-    (L <= LL -> printf("[Level %w] " ++ Format, L, A1, A2, A3, A4, A5, A6), nl; true).
+    (L <= LL -> printf("[Level %w] "++Text,L,A1,A2,A3), nl; true).
+logging(L,Text,A1,A2,A3), atom(L) =>
+    LL = get_global_map().get(logging_level),
+    T := logging(L),
+    if T[1] <= LL then
+        printf(p_color(T[2],"[Level %w] ")++Text,to_uppercase(atom_chars(L)),A1,A2,A3), nl
+    end.
+logging(L,Text,A1,A2,A3,A4), number(L) =>
+    LL = get_global_map().get(logging_level),
+    (L <= LL -> printf("[Level %w] "++Text,L,A1,A2,A3,A4), nl; true).
+logging(L,Text,A1,A2,A3,A4), atom(L) =>
+    LL = get_global_map().get(logging_level),
+    T := logging(L),
+    if T[1] <= LL then
+        printf(p_color(T[2],"[Level %w] ")++Text,to_uppercase(atom_chars(L)),A1,A2,A3,A4), nl
+    end.
+logging(L,Text,A1,A2,A3,A4,A5), number(L) =>
+    LL = get_global_map().get(logging_level),
+    (L <= LL -> printf("[Level %w] "++Text,L,A1,A2,A3,A4,A5), nl; true).
+logging(L,Text,A1,A2,A3,A4,A5), atom(L) =>
+    LL = get_global_map().get(logging_level),
+    T := logging(L),
+    if T[1] <= LL then
+        printf(p_color(T[2],"[Level %w] ")++Text,to_uppercase(atom_chars(L)),A1,A2,A3,A4,A5), nl
+    end.
+logging(L,Text,A1,A2,A3,A4,A5,A6), number(L) =>
+    LL = get_global_map().get(logging_level),
+    (L <= LL -> printf("[Level %w] "++Text,L,A1,A2,A3,A4,A5,A6), nl; true).
+logging(L,Text,A1,A2,A3,A4,A5,A6), atom(L) =>
+    LL = get_global_map().get(logging_level),
+    T := logging(L),
+    if T[1] <= LL then
+        printf(p_color(T[2],"[Level %w] ")++Text,to_uppercase(atom_chars(L)),A1,A2,A3,A4,A5,A6), nl
+    end.
+logging(L,Text,A1,A2,A3,A4,A5,A6,A7), number(L) =>
+    LL = get_global_map().get(logging_level),
+    (L <= LL -> printf("[Level %w] "++Text,L,A1,A2,A3,A4,A5,A6,A7), nl; true).
+logging(L,Text,A1,A2,A3,A4,A5,A6,A7), atom(L) =>
+    LL = get_global_map().get(logging_level),
+    T := logging(L),
+    if T[1] <= LL then
+        printf(p_color(T[2],"[Level %w] ")++Text,to_uppercase(atom_chars(L)),A1,A2,A3,A4,A5,A6,A7), nl
+    end.
+logging(L,Text,A1,A2,A3,A4,A5,A6,A7,A8), number(L) =>
+    LL = get_global_map().get(logging_level),
+    (L <= LL -> printf("[Level %w] "++Text,L,A1,A2,A3,A4,A5,A6,A7,A8), nl; true).
+logging(L,Text,A1,A2,A3,A4,A5,A6,A7,A8), atom(L) =>
+    LL = get_global_map().get(logging_level),
+    T := logging(L),
+    if T[1] <= LL then
+        printf(p_color(T[2],"[Level %w] ")++Text,to_uppercase(atom_chars(L)),A1,A2,A3,A4,A5,A6,A7,A8), nl
+    end.
+logging(L,Text,A1,A2,A3,A4,A5,A6,A7,A8,A9), number(L) =>
+    LL = get_global_map().get(logging_level),
+    (L <= LL -> printf("[Level %w] "++Text,L,A1,A2,A3,A4,A5,A6,A7,A8,A9), nl; true).
+logging(L,Text,A1,A2,A3,A4,A5,A6,A7,A8,A9), atom(L) =>
+    LL = get_global_map().get(logging_level),
+    T := logging(L),
+    if T[1] <= LL then
+        printf(p_color(T[2],"[Level %w] ")++Text,to_uppercase(atom_chars(L)),A1,A2,A3,A4,A5,A6,A7,A8,A9), nl
+    end.
