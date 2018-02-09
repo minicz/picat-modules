@@ -1,0 +1,60 @@
+% file: term_color.pi
+% author: Marcio Minicz
+% version: 0.1
+% description: terminal color module for Picat.
+% readme: 
+%         TODO
+% github link: [to be included]
+%
+% The MIT License (MIT)
+% 
+% Copyright (c) 2018 Marcio Minicz
+% 
+% Permission is hereby granted, free of charge, to any person obtaining a copy
+% of this software and associated documentation files (the "Software"), to deal
+% in the Software without restriction, including without limitation the rights
+% to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+% copies of the Software, and to permit persons to whom the Software is
+% furnished to do so, subject to the following conditions:
+% 
+% The above copyright notice and this permission notice shall be included in
+% all copies or substantial portions of the Software.
+% 
+% THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+% IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+% FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+% AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+% LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+% OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+% THE SOFTWARE.
+
+module term_color.
+
+p_reset       => printf("\033\[0m").
+p_cls         => printf("\033\[2J").
+p_bold        => printf("\033\[1m").
+p_faint       => printf("\033\[2m").
+p_italic      => printf("\033\[3m").
+p_underline   => printf("\033\[4m").
+p_noBold      => printf("\033\[22m").
+p_noFaint     => printf("\033\[22m").
+p_noItalic    => printf("\033\[23m").
+p_noUnderline => printf("\033\[24m").
+                
+p_black(T) = R   => R = "\033\[30m"++T++"\033\[39m".
+p_red(T) = R     => R = "\033\[31m"++T++"\033\[39m".
+p_green(T) = R   => R = "\033\[32m"++T++"\033\[39m".
+p_yellow(T) = R  => R = "\033\[33m"++T++"\033\[39m".
+p_blue(T) = R    => R = "\033\[34m"++T++"\033\[39m".
+p_magenta(T) = R => R = "\033\[35m"++T++"\033\[39m".
+p_cyan(T) = R    => R = "\033\[36m"++T++"\033\[39m".
+p_white(T) = R   => R = "\033\[37m"++T++"\033\[39m".
+p_Black(T) = R   => R = "\033\[40m"++T++"\033\[49m".
+p_Red(T) = R     => R = "\033\[41m"++T++"\033\[49m".
+p_Green(T) = R   => R = "\033\[42m"++T++"\033\[49m".
+p_Yellow(T) = R  => R = "\033\[43m"++T++"\033\[49m".
+p_Blue(T) = R    => R = "\033\[44m"++T++"\033\[49m".
+p_Magenta(T) = R => R = "\033\[45m"++T++"\033\[49m".
+p_Cyan(T) = R    => R = "\033\[46m"++T++"\033\[49m".
+p_White(T) = R   => R = "\033\[47m"++T++"\033\[49m".
+                
