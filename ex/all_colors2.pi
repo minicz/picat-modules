@@ -1,0 +1,34 @@
+import term_color.
+
+main =>
+    Colors = [[black,bBlack],
+              [red,bRed],
+              [green,bGreen],
+              [yellow,bYellow],
+              [blue,bBlue],
+              [magenta,bMagenta],
+              [cyan,bCyan],
+              [white,bWhite]],
+
+    p_reset,
+    p_cls,
+    println(p_red(p_Green(" Hello "))++" "++p_blue(p_Yellow(" World "))),
+    nl,
+
+    foreach(C in Colors)
+        printf(p_color(C[1],atom_chars(C[1]))++"  "++p_color(C[2],atom_chars(C[1]))++"  "),
+        p_bold,
+        printf(p_color(C[1],atom_chars(C[1]))++"  "++p_color(C[2],atom_chars(C[1]))++"  "),
+        p_noBold,
+        p_faint,
+        printf(p_color(C[1],atom_chars(C[1]))++"  "++p_color(C[2],atom_chars(C[1]))++"  "),
+        p_noFaint,
+        p_italic,
+        printf(p_color(C[1],atom_chars(C[1]))++"  "++p_color(C[2],atom_chars(C[1]))++"  "),
+        p_noItalic,
+      	p_underline,
+        printf(p_color(C[1],atom_chars(C[1]))++"  "++p_color(C[2],atom_chars(C[1]))++"  "),
+        p_noUnderline,
+        nl,
+    end,
+	p_reset.
